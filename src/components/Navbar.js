@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 export class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
-        <Link className="navbar-brand" to="/">
-          Reactomon
+      <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-warning">
+        <Link className="navbar-brand" style={{ color: "#000080" }} to="/">
+          REACTOMON
         </Link>
         <button
           className="navbar-toggler"
