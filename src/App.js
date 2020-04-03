@@ -1,13 +1,18 @@
 import React from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Welcome from "./components/Welcome";
+import PokemonList from "./components/PokemonList";
+import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App container">
         <Navbar />
+        <Route exact path="/" render={() => <Welcome />} />
+        <Route path="/pokemon" render={() => <PokemonList />} />
+        <Route path="/type" />
       </div>
     </Router>
   );
