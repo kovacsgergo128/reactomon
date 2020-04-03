@@ -11,7 +11,14 @@ function App() {
       <div className="App container">
         <Navbar />
         <Route exact path="/" render={() => <Welcome />} />
-        <Route path="/pokemon" render={() => <PokemonList />} />
+        <Route
+          path="/pokemon"
+          render={() => (
+            <div className="d-flex flex-wrap justify-content-center">
+              <PokemonList />
+            </div>
+          )}
+        />
         <Route path="/type" />
       </div>
     </Router>

@@ -13,9 +13,13 @@ export class PokemonList extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon")
-      .then(res => this.setState({ pokemonsActualPage: res.data.results }));
+    axios.get("https://pokeapi.co/api/v2/pokemon").then(res =>
+      this.setState({
+        pokemonsActualPage: res.data.results,
+        previousPage: res.data.previous,
+        nextPage: res.data.next
+      })
+    );
   }
 
   render() {
