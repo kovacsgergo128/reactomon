@@ -23,11 +23,17 @@ export class PokemonList extends Component {
   }
 
   render() {
-    return this.state.pokemonsActualPage.map(pokemon => (
-      <div>
-        <PokemonListItem name={pokemon.name} imgUrl={pokemon.imgUrl} />
+    return (
+      <div className="d-flex flex-wrap justify-content-center">
+        {this.state.pokemonsActualPage.map(pokemon => {
+          return (
+            <div>
+              <PokemonListItem name={pokemon.name} imgUrl={pokemon.imgUrl} />
+            </div>
+          );
+        })}
       </div>
-    ));
+    );
   }
 }
 
