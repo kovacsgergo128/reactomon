@@ -36,11 +36,15 @@ export class PokemonList extends Component {
     }
   };
 
-  composeImageUrlFor(pokeUrl) {
-    const splittedUrl = pokeUrl.split("/");
+  getPokemonIdFrom(url) {
+    const splittedUrl = url.split("/");
+    return splittedUrl[splittedUrl.length - 2];
+  }
+
+  composeImageUrlFor(pokemonId) {
     return (
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
-      splittedUrl[splittedUrl.length - 2] +
+      pokemonId +
       ".png"
     );
   }
@@ -76,9 +80,12 @@ export class PokemonList extends Component {
           {this.state.pokemonsActualPage.map(pokemon => {
             return (
               <PokemonListItem
-                key={pokemon.name}
+                key={pokemon.url}
+                id={this.getPokemonIdFrom(pokemon.url)}
                 name={pokemon.name}
-                imgUrl={this.composeImageUrlFor(pokemon.url)}
+                imgUrl={this.composeImageUrlFor(
+                  this.getPokemonIdFrom(pokemon.url)
+                )}
               />
             );
           })}

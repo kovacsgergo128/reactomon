@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import PokemonList from "./components/PokemonList";
+import PokemonDetail from "./components/PokemonDetail";
+
 import "./App.css";
 
 function App() {
@@ -10,9 +13,10 @@ function App() {
     <Router>
       <div className="App container">
         <Navbar />
-        <Route exact path="/" render={() => <Welcome />} />
-        <Route path="/pokemon" render={() => <PokemonList />} />
-        <Route path="/type" />
+        <Route exact path="/" component={Welcome} />
+        <Route exact path="/pokemon" component={PokemonList} />
+        <Route exact path="/type" />
+        <Route exact path="/pokemon/:pokemonId" component={PokemonDetail} />
       </div>
     </Router>
   );
