@@ -21,7 +21,7 @@ export class Navbar extends Component {
         <div className="collapse navbar-collapse" id="navbar">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <NavbarLink url="/pokemons" name="Pokemons" />
+              <NavbarLink url="/pokemon" name="Pokemons" />
             </li>
             <li className="nav-item">
               <NavbarLink url="/types" name="Types" />
