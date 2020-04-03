@@ -24,7 +24,7 @@ export class Navbar extends Component {
               <NavbarLink url="/pokemon" name="Pokemons" />
             </li>
             <li className="nav-item">
-              <NavbarLink url="/types" name="Types" />
+              <NavbarLink url="/type" name="Types" />
             </li>
           </ul>
         </div>
