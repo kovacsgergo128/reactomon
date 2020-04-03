@@ -12,8 +12,8 @@ export class PokemonList extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then(res =>
+  getPage(url) {
+    axios.get(url).then(res =>
       this.setState({
         pokemonsActualPage: res.data.results,
         previousPage: res.data.previous,
@@ -22,13 +22,29 @@ export class PokemonList extends Component {
     );
   }
 
+  composeImageUrlFor(pokeUrl) {
+    const splittedUrl = pokeUrl.split("/");
+    return (
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+      splittedUrl[splittedUrl.length - 2] +
+      ".png"
+    );
+  }
+
+  componentDidMount() {
+    this.getPage("https://pokeapi.co/api/v2/pokemon");
+  }
+
   render() {
     return (
       <div className="d-flex flex-wrap justify-content-center">
         {this.state.pokemonsActualPage.map(pokemon => {
           return (
             <div>
-              <PokemonListItem name={pokemon.name} imgUrl={pokemon.imgUrl} />
+              <PokemonListItem
+                name={pokemon.name}
+                imgUrl={this.composeImageUrlFor(pokemon.url)}
+              />
             </div>
           );
         })}
