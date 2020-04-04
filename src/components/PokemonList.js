@@ -57,7 +57,12 @@ export class PokemonList extends Component {
     return (
       <React.Fragment>
         <div className="btn-group" role="group" onClick={this.handlePagination}>
-          <button type="button" className="btn btn-secondary" value="previous">
+          <button
+            type="button"
+            className="btn btn-warning"
+            value="previous"
+            style={{ color: "#000080" }}
+          >
             Previous
           </button>
           <div
@@ -65,14 +70,19 @@ export class PokemonList extends Component {
               backgroundColor: "#fff",
               backgroundSize: "cover",
               color: "#000080",
-              padding: "3px 15px",
-              fontSize: "26px",
+              padding: "1px 15px",
+              fontSize: "18px",
               textAlign: "center"
             }}
           >
             <p>{this.state.actualPageNr}</p>
           </div>
-          <button type="button" className="btn btn-secondary" value="next">
+          <button
+            type="button"
+            className="btn btn-warning"
+            value="next"
+            style={{ color: "#000080" }}
+          >
             Next
           </button>
         </div>
