@@ -4,10 +4,10 @@ export default function Welcome() {
   return (
     <div
       style={{
-        backgroundColor: "rgba(234, 238, 150, 0.9)",
+        backgroundColor: "rgba(240, 173, 78, 0.9)",
         padding: "20px",
         textAlign: "center",
-        color: "#000080"
+        color: "#0000CD"
       }}
     >
       <h1 style={{ padding: "10px 0" }}>Welcome Visitor</h1>

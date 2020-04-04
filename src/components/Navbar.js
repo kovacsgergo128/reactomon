@@ -7,7 +7,11 @@ export class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-warning">
-        <Link className="navbar-brand" style={{ color: "#000080" }} to="/">
+        <Link
+          className="navbar-brand"
+          style={{ color: "#0000CD", textAlign: "center", fontSize: "30px" }}
+          to="/"
+        >
           REACTOMON
         </Link>
         <button

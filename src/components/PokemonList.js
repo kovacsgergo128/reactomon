@@ -56,23 +56,33 @@ export class PokemonList extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="btn-group" role="group" onClick={this.handlePagination}>
+        <div
+          className="d-flex justify-content-center"
+          onClick={this.handlePagination}
+        >
           <button
             type="button"
             className="btn btn-warning"
             value="previous"
-            style={{ color: "#000080" }}
+            style={{
+              color: "#0000cd",
+              width: "10%",
+              fontSize: "18px",
+              paddingTop: 0
+            }}
           >
             Previous
           </button>
           <div
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "#f0ad4e",
               backgroundSize: "cover",
-              color: "#000080",
+              color: "#0000cd",
               padding: "1px 15px",
               fontSize: "18px",
-              textAlign: "center"
+              textAlign: "center",
+              margin: "0 15px",
+              borderRadius: "50%"
             }}
           >
             <p>{this.state.actualPageNr}</p>
@@ -81,7 +91,12 @@ export class PokemonList extends Component {
             type="button"
             className="btn btn-warning"
             value="next"
-            style={{ color: "#000080" }}
+            style={{
+              color: "#0000cd",
+              width: "10%",
+              fontSize: "18px",
+              paddingTop: 0
+            }}
           >
             Next
           </button>
