@@ -1,111 +1,89 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-export class PokemonDetail extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: null,
-      experience: null,
-      height: null,
-      weight: null,
-      imgUrl: null,
-      types: [],
-      abilities: [],
-      items: [],
-      stats: [],
+const PokemonDetail = (props) => {
+  const [name, setName] = useState(null);
+  const [experience, setExperience] = useState(null);
+  const [imgUrl, setImgUrl] = useState(null);
+  const [types, setTypes] = useState([]);
+  const [abilities, setAbilities] = useState([]);
+  const [items, setItems] = useState([]);
+  const [stats, setStats] = useState([]);
+
+  useEffect(() => {
+    const getPokemonId = () => {
+      const {
+        match: {
+          params: { pokemonId },
+        },
+      } = props;
+      return pokemonId;
     };
-  }
 
-  getPokemonId = () => {
-    const {
-      match: {
-        params: { pokemonId },
-      },
-    } = this.props;
-    return pokemonId;
-  };
-
-  componentDidMount() {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${this.getPokemonId()}/`)
-      .then((res) =>
-        this.setState({
-          name: res.data.name,
-          experience: res.data.base_experience,
-          height: res.data.height,
-          weight: res.data.weight,
-          imgUrl: res.data.sprites.front_default,
-          types: res.data.types,
-          abilities: res.data.abilities,
-          items: res.data.held_items,
-          stats: res.data.stats,
-        })
-      );
-  }
+      .get(`https://pokeapi.co/api/v2/pokemon/${getPokemonId()}/`)
+      .then((res) => {
+        setName(res.data.name);
+        setExperience(res.data.base_experience);
+        setImgUrl(res.data.sprites.front_default);
+        setTypes(res.data.types);
+        setAbilities(res.data.abilities);
+        setItems(res.data.held_items);
+        setStats(res.data.stats);
+      });
+  }, [props]);
 
-  render() {
-    return (
-      <DetailCard className="card border-dark">
-        <div className="card-header">
-          Types:{" "}
-          {this.state.types.map((type) => (
-            <TextValueDisplay key={type.type.name}>
-              {type.type.name}
-            </TextValueDisplay>
-          ))}
-          <span style={{ float: "right" }}>
-            Experience:{" "}
-            <ExperienceValueDisplay>
-              {this.state.experience}
-            </ExperienceValueDisplay>
-          </span>
-        </div>
-        <BigCardImage
-          className="card-img-top"
-          src={this.state.imgUrl}
-          alt={this.state.name}
-        />
-        <div className="card-body">
-          <CardTitle className="card-title">{this.state.name}</CardTitle>
-          <div className="card-text">
-            <PropertyTextBox>
-              Abilities:{" "}
-              {this.state.abilities.map((ability) => (
-                <TextValueDisplay
-                  key={ability.ability.name}
-                  style={{ float: "right" }}
-                >
-                  {ability.ability.name}
-                </TextValueDisplay>
-              ))}
-            </PropertyTextBox>
-            <PropertyTextBox>
-              Items:{" "}
-              {this.state.items.map((item) => (
-                <TextValueDisplay
-                  key={item.item.name}
-                  style={{ float: "right" }}
-                >
-                  {item.item.name}
-                </TextValueDisplay>
-              ))}
-            </PropertyTextBox>
-          </div>
-          <ul className="list-group list-group-flush mt-5">
-            {this.state.stats.map((stat) => (
-              <StatListItem className="list-group-item" key={stat.stat.name}>
-                {stat.stat.name}
-                <StatValueDisplay>{stat.base_stat}</StatValueDisplay>
-              </StatListItem>
+  return (
+    <DetailCard className="card border-dark">
+      <div className="card-header">
+        Types:{" "}
+        {types.map((type) => (
+          <TextValueDisplay key={type.type.name}>
+            {type.type.name}
+          </TextValueDisplay>
+        ))}
+        <span style={{ float: "right" }}>
+          Experience:{" "}
+          <ExperienceValueDisplay>{experience}</ExperienceValueDisplay>
+        </span>
+      </div>
+      <BigCardImage className="card-img-top" src={imgUrl} alt={name} />
+      <div className="card-body">
+        <CardTitle className="card-title">{name}</CardTitle>
+        <div className="card-text">
+          <PropertyTextBox>
+            Abilities:{" "}
+            {abilities.map((ability) => (
+              <TextValueDisplay
+                key={ability.ability.name}
+                style={{ float: "right" }}
+              >
+                {ability.ability.name}
+              </TextValueDisplay>
             ))}
-          </ul>
+          </PropertyTextBox>
+          <PropertyTextBox>
+            Items:{" "}
+            {items.map((item) => (
+              <TextValueDisplay key={item.item.name} style={{ float: "right" }}>
+                {item.item.name}
+              </TextValueDisplay>
+            ))}
+          </PropertyTextBox>
         </div>
-      </DetailCard>
-    );
-  }
-}
+        <ul className="list-group list-group-flush mt-5">
+          {stats.map((stat) => (
+            <StatListItem className="list-group-item" key={stat.stat.name}>
+              {stat.stat.name}
+              <StatValueDisplay>{stat.base_stat}</StatValueDisplay>
+            </StatListItem>
+          ))}
+        </ul>
+      </div>
+    </DetailCard>
+  );
+};
 
 const DetailCard = styled.div`
   width: 60%;
