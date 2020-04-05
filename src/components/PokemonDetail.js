@@ -105,7 +105,7 @@ export class PokemonDetail extends Component {
           >
             {this.state.name}
           </h5>
-          <p className="card-text" style={{ fontSize: "18px" }}>
+          <div className="card-text" style={{ fontSize: "18px" }}>
             <div style={{ padding: "5px 0px", margin: "20px 0px" }}>
               Abilities:{" "}
               {this.state.abilities.map((ability) => (
@@ -142,7 +142,7 @@ export class PokemonDetail extends Component {
                 </span>
               ))}
             </div>
-          </p>
+          </div>
           <ul className="list-group list-group-flush mt-5">
             {this.state.stats.map((stat) => (
               <li
@@ -151,6 +151,7 @@ export class PokemonDetail extends Component {
                   backgroundColor: "rgba(240, 173, 78, 0.8)",
                   fontSize: "18px",
                 }}
+                key={stat.stat.name}
               >
                 {stat.stat.name}
                 <span
