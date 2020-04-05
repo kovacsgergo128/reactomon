@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PokemonListItem from "./PokemonListItem";
 import axios from "axios";
+import styled from "styled-components";
 
 export class PokemonList extends Component {
   constructor() {
@@ -57,64 +58,21 @@ export class PokemonList extends Component {
     return (
       <React.Fragment>
         <h2 style={{ marginBottom: "50px" }}>
-          <span
-            style={{
-              backgroundColor: "rgba(240, 173, 78, 0.8)",
-              widows: "auto",
-              padding: "0 20px 25px 20px",
-              borderRadius: "5px",
-              boxShadow: "10px 10px 5px -2px rgba(0, 0, 0, 1)",
-            }}
-          >
-            List of Pokemons
-          </span>
+          <HeaderSpan>List of Pokemons</HeaderSpan>
         </h2>
         <div
           className="d-flex justify-content-center"
           onClick={this.handlePagination}
         >
-          <button
-            type="button"
-            className="btn btn-warning"
-            value="previous"
-            style={{
-              color: "#0000cd",
-              width: "10%",
-              fontSize: "18px",
-              paddingTop: "0",
-              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)",
-            }}
-          >
+          <Button type="button" className="btn btn-warning" value="previous">
             Previous
-          </button>
-          <div
-            style={{
-              backgroundColor: "#f0ad4e",
-              backgroundSize: "cover",
-              padding: "1px 15px",
-              fontSize: "18px",
-              textAlign: "center",
-              margin: "0 15px",
-              borderRadius: "50%",
-              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)",
-            }}
-          >
+          </Button>
+          <PageDisplay>
             <p>{this.state.actualPageNr}</p>
-          </div>
-          <button
-            type="button"
-            className="btn btn-warning"
-            value="next"
-            style={{
-              color: "#0000cd",
-              width: "10%",
-              fontSize: "18px",
-              paddingTop: "0",
-              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)",
-            }}
-          >
+          </PageDisplay>
+          <Button type="button" className="btn btn-warning" value="next">
             Next
-          </button>
+          </Button>
         </div>
         <div className="d-flex flex-wrap justify-content-center">
           {this.state.pokemonsActualPage.map((pokemon) => {
@@ -134,5 +92,32 @@ export class PokemonList extends Component {
     );
   }
 }
+
+const HeaderSpan = styled.span`
+  background-color: rgba(240, 173, 78, 0.8);
+  widows: auto;
+  padding: 0 20px 25px 20px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);
+`;
+
+const Button = styled.button`
+  color: #0000cd;
+  width: 10%;
+  font-size: 18px;
+  padding-top: 0;
+  box-shadow: 5px 5px 2px -1px rgba(0, 0, 0, 1);
+`;
+
+const PageDisplay = styled.div`
+  background-color: #f0ad4e;
+  background-size: cover;
+  padding: 1px 15px;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 15px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 2px -1px rgba(0, 0, 0, 1);
+`;
 
 export default PokemonList;

@@ -6,7 +6,7 @@ export default function NavbarLink(props) {
     <Link
       className="nav-item nav-link active"
       to={props.url}
-      style={{ color: "#0000CD", fontSize: "25px" }}
+      style={{ color: "inherit" }}
     >
       {props.name}
     </Link>

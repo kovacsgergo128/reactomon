@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 export class PokemonDetail extends Component {
   constructor() {
@@ -46,135 +47,124 @@ export class PokemonDetail extends Component {
 
   render() {
     return (
-      <div
-        className="card"
-        style={{
-          width: "60%",
-          margin: "0 auto",
-          backgroundColor: "rgba(240, 173, 78, 0.8)",
-          color: "#0000CD",
-          boxShadow: "10px 10px 5px -2px rgba(0, 0, 0, 1)",
-        }}
-      >
-        <div className="card-header" style={{ fontSize: "20px" }}>
+      <DetailCard className="card border-dark">
+        <div className="card-header">
           Types:{" "}
           {this.state.types.map((type) => (
-            <span
-              key={type.type.name}
-              style={{
-                color: "#f0ad4e",
-                backgroundColor: "#0000CD",
-                margin: "3px 4px",
-                padding: "0 5px 20px 5px",
-                borderRadius: "15px",
-              }}
-            >
+            <TextValueDisplay key={type.type.name}>
               {type.type.name}
-            </span>
+            </TextValueDisplay>
           ))}
           <span style={{ float: "right" }}>
             Experience:{" "}
-            <span
-              style={{
-                color: "#f0ad4e",
-                backgroundColor: "#0000CD",
-                margin: "3px 4px",
-                padding: "5px 5px 20px 5px",
-                borderRadius: "20px",
-                textAlign: "center",
-              }}
-            >
+            <ExperienceValueDisplay>
               {this.state.experience}
-            </span>
+            </ExperienceValueDisplay>
           </span>
         </div>
-        <img
+        <BigCardImage
           className="card-img-top"
           src={this.state.imgUrl}
           alt={this.state.name}
-          style={{ maxHeight: "300px", maxWidth: "300px", margin: "0 auto" }}
         />
         <div className="card-body">
-          <h5
-            className="card-title"
-            style={{
-              textAlign: "center",
-              fontSize: "40px",
-              margin: "-60px auto 40px auto",
-            }}
-          >
-            {this.state.name}
-          </h5>
-          <div className="card-text" style={{ fontSize: "18px" }}>
-            <div style={{ padding: "5px 0px", margin: "20px 0px" }}>
+          <CardTitle className="card-title">{this.state.name}</CardTitle>
+          <div className="card-text">
+            <PropertyTextBox>
               Abilities:{" "}
               {this.state.abilities.map((ability) => (
-                <span
+                <TextValueDisplay
                   key={ability.ability.name}
-                  style={{
-                    color: "#f0ad4e",
-                    backgroundColor: "#0000CD",
-                    margin: "3px 4px",
-                    padding: "0px 5px 15px 5px",
-                    borderRadius: "20px",
-                    float: "right",
-                  }}
+                  style={{ float: "right" }}
                 >
                   {ability.ability.name}
-                </span>
+                </TextValueDisplay>
               ))}
-            </div>
-            <div style={{ padding: "5px 0px", margin: "20px 0px" }}>
+            </PropertyTextBox>
+            <PropertyTextBox>
               Items:{" "}
               {this.state.items.map((item) => (
-                <span
+                <TextValueDisplay
                   key={item.item.name}
-                  style={{
-                    color: "#f0ad4e",
-                    backgroundColor: "#0000CD",
-                    margin: "3px 4px",
-                    padding: "0px 5px 15px 5px",
-                    borderRadius: "20px",
-                    float: "right",
-                  }}
+                  style={{ float: "right" }}
                 >
                   {item.item.name}
-                </span>
+                </TextValueDisplay>
               ))}
-            </div>
+            </PropertyTextBox>
           </div>
           <ul className="list-group list-group-flush mt-5">
             {this.state.stats.map((stat) => (
-              <li
-                className="list-group-item"
-                style={{
-                  backgroundColor: "rgba(240, 173, 78, 0.8)",
-                  fontSize: "18px",
-                }}
-                key={stat.stat.name}
-              >
+              <StatListItem className="list-group-item" key={stat.stat.name}>
                 {stat.stat.name}
-                <span
-                  style={{
-                    float: "right",
-                    backgroundColor: "#0000cd",
-                    borderRadius: "20px",
-                    color: "#f0ad4e",
-                    margin: "3px 4px",
-                    padding: "0px 0px 10px 0px",
-                    width: "40px",
-                    textAlign: "center",
-                  }}
-                >
-                  {stat.base_stat}
-                </span>
-              </li>
+                <StatValueDisplay>{stat.base_stat}</StatValueDisplay>
+              </StatListItem>
             ))}
           </ul>
         </div>
-      </div>
+      </DetailCard>
     );
   }
 }
+
+const DetailCard = styled.div`
+  width: 60%;
+  margin: 0 auto;
+  background-color: rgba(240, 173, 78, 0.8);
+  color: #0000cd;
+  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);
+  font-size: 20px;
+`;
+
+const TextValueDisplay = styled.span`
+  color: #f0ad4e;
+  background-color: #0000cd;
+  margin: 3px 4px;
+  padding: 0 5px 20px 5px;
+  border-radius: 15px;
+`;
+
+const ExperienceValueDisplay = styled.span`
+  color: #f0ad4e;
+  background-color: #0000cd;
+  margin: 3px 4px;
+  padding: 5px 5px 20px 5px;
+  border-radius: 20px;
+  text-align: center;
+`;
+
+const StatValueDisplay = styled.span`
+  float: right;
+  background-color: #0000cd;
+  border-radius: 20px;
+  color: #f0ad4e;
+  margin: 3px 4px;
+  padding: 0px 0px 10px 0px;
+  width: 40px;
+  text-align: center;
+`;
+
+const BigCardImage = styled.img`
+  max-height: 300px;
+  max-width: 300px;
+  margin: 0 auto;
+`;
+
+const PropertyTextBox = styled.div`
+  padding: 5px 0px;
+  margin: 20px 0px;
+  font-size: 18px;
+`;
+
+const StatListItem = styled.li`
+  background-color: rgba(240, 173, 78, 0.8);
+  font-size: 18px;
+`;
+
+const CardTitle = styled.h5`
+  text-align: center;
+  font-size: 40px;
+  margin: -60px auto 40px auto;
+`;
 
 export default PokemonDetail;
