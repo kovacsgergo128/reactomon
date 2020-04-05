@@ -9,21 +9,21 @@ export class PokemonList extends Component {
       pokemonsActualPage: [],
       previousPage: null,
       nextPage: null,
-      actualPageNr: 1
+      actualPageNr: 1,
     };
   }
 
   getPage(url) {
-    axios.get(url).then(res =>
+    axios.get(url).then((res) =>
       this.setState({
         pokemonsActualPage: res.data.results,
         previousPage: res.data.previous,
-        nextPage: res.data.next
+        nextPage: res.data.next,
       })
     );
   }
 
-  handlePagination = e => {
+  handlePagination = (e) => {
     if (e.target.value === "next" && this.state.nextPage !== null) {
       this.getPage(this.state.nextPage);
       this.setState({ actualPageNr: this.state.actualPageNr + 1 });
@@ -56,7 +56,7 @@ export class PokemonList extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>
+        <h2 style={{ marginBottom: "50px" }}>
           <span
             style={{
               backgroundColor: "rgba(240, 173, 78, 0.8)",
@@ -64,7 +64,6 @@ export class PokemonList extends Component {
               padding: "0 20px 25px 20px",
               borderRadius: "5px",
               boxShadow: "10px 10px 5px -2px rgba(0, 0, 0, 1)",
-              color: "#0000CD"
             }}
           >
             List of Pokemons
@@ -83,7 +82,7 @@ export class PokemonList extends Component {
               width: "10%",
               fontSize: "18px",
               paddingTop: "0",
-              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)"
+              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)",
             }}
           >
             Previous
@@ -92,13 +91,12 @@ export class PokemonList extends Component {
             style={{
               backgroundColor: "#f0ad4e",
               backgroundSize: "cover",
-              color: "#0000cd",
               padding: "1px 15px",
               fontSize: "18px",
               textAlign: "center",
               margin: "0 15px",
               borderRadius: "50%",
-              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)"
+              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)",
             }}
           >
             <p>{this.state.actualPageNr}</p>
@@ -112,14 +110,14 @@ export class PokemonList extends Component {
               width: "10%",
               fontSize: "18px",
               paddingTop: "0",
-              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)"
+              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)",
             }}
           >
             Next
           </button>
         </div>
         <div className="d-flex flex-wrap justify-content-center">
-          {this.state.pokemonsActualPage.map(pokemon => {
+          {this.state.pokemonsActualPage.map((pokemon) => {
             return (
               <PokemonListItem
                 key={pokemon.url}
