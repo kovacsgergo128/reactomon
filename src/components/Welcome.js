@@ -8,8 +8,11 @@ export default function Welcome() {
       <h3>
         This is REACTOMON, a simple Pokemon listing site developed with React
         and using
-        <a href="https://pokeapi.co/"> PokeApi</a> as data provider. Check the
-        menu to continue{" "}
+        <a href="https://pokeapi.co/" target="blank">
+          {" "}
+          PokeApi
+        </a>{" "}
+        as data provider. Check the menu to continue{" "}
       </h3>
     </TextBox>
   );
