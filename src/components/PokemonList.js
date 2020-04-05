@@ -56,6 +56,20 @@ export class PokemonList extends Component {
   render() {
     return (
       <React.Fragment>
+        <h2>
+          <span
+            style={{
+              backgroundColor: "rgba(240, 173, 78, 0.8)",
+              widows: "auto",
+              padding: "0 20px 25px 20px",
+              borderRadius: "5px",
+              boxShadow: "10px 10px 5px -2px rgba(0, 0, 0, 1)",
+              color: "#0000CD"
+            }}
+          >
+            List of Pokemons
+          </span>
+        </h2>
         <div
           className="d-flex justify-content-center"
           onClick={this.handlePagination}
@@ -68,7 +82,8 @@ export class PokemonList extends Component {
               color: "#0000cd",
               width: "10%",
               fontSize: "18px",
-              paddingTop: 0
+              paddingTop: "0",
+              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)"
             }}
           >
             Previous
@@ -82,7 +97,8 @@ export class PokemonList extends Component {
               fontSize: "18px",
               textAlign: "center",
               margin: "0 15px",
-              borderRadius: "50%"
+              borderRadius: "50%",
+              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)"
             }}
           >
             <p>{this.state.actualPageNr}</p>
@@ -95,7 +111,8 @@ export class PokemonList extends Component {
               color: "#0000cd",
               width: "10%",
               fontSize: "18px",
-              paddingTop: 0
+              paddingTop: "0",
+              boxShadow: "5px 5px 2px -1px rgba(0, 0, 0, 1)"
             }}
           >
             Next

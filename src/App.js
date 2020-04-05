@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <div className="App container">
+      <div className="App container justify-content-center">
         <Navbar />
         <Route exact path="/" component={Welcome} />
         <Route exact path="/pokemon" component={PokemonList} />
