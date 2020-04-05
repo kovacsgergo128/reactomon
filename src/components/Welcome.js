@@ -18,7 +18,7 @@ export default function Welcome() {
 const TextBox = styled.div`
   background-color: rgba(240, 173, 78, 0.8);
   height: 11rem;
-  padding: 0 20 px 40px 20px;
+  padding: 10px 20px 10px 20px;
   text-align: center;
   border-radius: 5px;
   box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);

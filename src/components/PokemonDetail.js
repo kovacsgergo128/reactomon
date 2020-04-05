@@ -120,7 +120,7 @@ const TextValueDisplay = styled.span`
   color: #f0ad4e;
   background-color: #0000cd;
   margin: 3px 4px;
-  padding: 0 5px 20px 5px;
+  padding: 5px 5px;
   border-radius: 15px;
 `;
 
@@ -128,8 +128,8 @@ const ExperienceValueDisplay = styled.span`
   color: #f0ad4e;
   background-color: #0000cd;
   margin: 3px 4px;
-  padding: 5px 5px 20px 5px;
-  border-radius: 20px;
+  padding: 10px 5px;
+  border-radius: 30px;
   text-align: center;
 `;
 
@@ -138,9 +138,10 @@ const StatValueDisplay = styled.span`
   background-color: #0000cd;
   border-radius: 20px;
   color: #f0ad4e;
-  margin: 3px 4px;
-  padding: 0px 0px 10px 0px;
+  margin: auto 0;
   width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
 `;
 
@@ -164,7 +165,7 @@ const StatListItem = styled.li`
 const CardTitle = styled.h5`
   text-align: center;
   font-size: 40px;
-  margin: -60px auto 40px auto;
+  margin: -20px auto 40px auto;
 `;
 
 export default PokemonDetail;

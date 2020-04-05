@@ -17,20 +17,12 @@ export class PokemonTypes extends Component {
   }
 
   render() {
-    const ListCard = styled.div`
-      width: 16rem;
-      margin: 10px;
-      background-color: rgba(240, 173, 78, 0.8);
-      color: #0000cd;
-      box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);
-    `;
-
     return (
       <React.Fragment>
         <h2 style={{ marginBottom: "50px" }}>
           <HeaderSpan>List of Pokemon Types</HeaderSpan>
         </h2>
-        <div className="d-flex flex-wrap justify-content-center">
+        <div className="d-flex flex-wrap">
           {this.state.types.map((type) => {
             return (
               <ListCard className="card border-dark" key={type.name}>
@@ -48,10 +40,18 @@ export class PokemonTypes extends Component {
   }
 }
 
+const ListCard = styled.div`
+  width: 16rem;
+  margin: 10px;
+  background-color: rgba(240, 173, 78, 0.8);
+  color: #0000cd;
+  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);
+`;
+
 const HeaderSpan = styled.span`
   background-color: rgba(240, 173, 78, 0.8);
   widows: auto;
-  padding: 0 20px 25px 20px;
+  padding: 5px 20px;
   border-radius: 5px;
   box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);
 `;

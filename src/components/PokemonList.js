@@ -96,7 +96,7 @@ export class PokemonList extends Component {
 const HeaderSpan = styled.span`
   background-color: rgba(240, 173, 78, 0.8);
   widows: auto;
-  padding: 0 20px 25px 20px;
+  padding: 5px 20px;
   border-radius: 5px;
   box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 1);
 `;
@@ -105,17 +105,18 @@ const Button = styled.button`
   color: #0000cd;
   width: 10%;
   font-size: 18px;
-  padding-top: 0;
   box-shadow: 5px 5px 2px -1px rgba(0, 0, 0, 1);
 `;
 
 const PageDisplay = styled.div`
   background-color: #f0ad4e;
   background-size: cover;
-  padding: 1px 15px;
+  height: 50px;
+  line-height: 50px;
+  width: 50px;
   font-size: 18px;
   text-align: center;
-  margin: 0 15px;
+  margin: 0 10px;
   border-radius: 50%;
   box-shadow: 5px 5px 2px -1px rgba(0, 0, 0, 1);
 `;
