@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NavbarLink from "./NavbarLink";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-export default function Navbar() {
+const Navbar = (props) => {
+  const [urlData] = useState([
+    { name: "Pokemons", url: "/pokemon" },
+    { name: "Types", url: "/type" },
+  ]);
+
   return (
     <StyledNavBar className="navbar navbar-expand-lg fixed-top">
       <Link className="navbar-brand" to="/" style={{ color: "inherit" }}>
@@ -21,19 +26,22 @@ export default function Navbar() {
 
       <div className="collapse navbar-collapse" id="navbar">
         <ul className="navbar-nav">
-          <li className="nav-item active">
-            <NavbarLink url="/pokemon" name="Pokemons" />
-          </li>
-          <li className="nav-item">
-            <NavbarLink url="/type" name="Types" />
-          </li>
+          {urlData.map((link) => {
+            return (
+              <li className="nav-item active" key={link.url}>
+                <NavbarLink url={link.url} name={link.name} />
+              </li>
+            );
+          })}
         </ul>
       </div>
     </StyledNavBar>
   );
-}
+};
 
 const StyledNavBar = styled.nav`
   background-color: #f0ad4e;
   color: #0000cd;
 `;
+
+export default Navbar;
